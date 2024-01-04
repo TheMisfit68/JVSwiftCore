@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Unwrappable{
+public protocol Unwrappable{
     var unwrapped:Any {get}
 }
 
@@ -24,7 +24,7 @@ extension Optional:Unwrappable{
 }
 
 // Unwrap an optional that might be hidden inside an Any
-func unwrapIfOptional<T>(any:T)->Any{
+public func unwrapIfOptional<T>(any:T)->Any{
     
     if let optional = any as? Unwrappable{
         return optional.unwrapped

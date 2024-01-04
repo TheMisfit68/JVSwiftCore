@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
     
     var utcToLocal: Date {
         let secondsFromUTC = Double(Calendar.current.timeZone.secondsFromGMT(for: self))

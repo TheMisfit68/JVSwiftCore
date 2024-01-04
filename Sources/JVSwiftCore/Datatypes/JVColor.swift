@@ -27,7 +27,7 @@ import UIKit
 public  typealias PlatFormColor = UIColor
 #endif
 
-extension PlatFormColor {
+public extension PlatFormColor {
     
     func lighter(amount : CGFloat = 0.25) -> PlatFormColor {
         return hueColorWithBrightnessAmount(amount: 1 + amount)

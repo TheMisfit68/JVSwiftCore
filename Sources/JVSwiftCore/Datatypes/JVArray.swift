@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Array {
+public extension Array {
     
     var firstIndex: Int? {
         return !self.isEmpty ?  0 :  nil
