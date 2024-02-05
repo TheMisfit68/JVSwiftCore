@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import JVSwiftCore
 
 public protocol Configurable:NotificationReceiver{
     
