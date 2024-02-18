@@ -7,20 +7,31 @@
 
 import Foundation
 
-public extension Encodable {
-	var description: String {
-		do {
-			let jsonData = try JSONEncoder().encode(self)
-			let options: JSONSerialization.WritingOptions = [.prettyPrinted]
-			let prettyPrintedData = try JSONSerialization.data(withJSONObject: try JSONSerialization.jsonObject(with: jsonData), options: options)
-			
-			if let jsonString = String(data: prettyPrintedData, encoding: .utf8) {
-				return jsonString
-			}
-		} catch {
-			return "Error encoding or pretty-printing \(type(of: self)): \(error)"
+// Make it possible to Create/Decode a Decodable object from a Data object
+// Such Data objects might e.g. be returned from a REST API request
+extension Decodable{
+	/// Initialize an object from Data
+	public init?(from data: Data, dateDecodingStrategy:JSONDecoder.DateDecodingStrategy = .deferredToDate) {
+		let jsonDecoder = JSONDecoder()
+		jsonDecoder.dateDecodingStrategy = dateDecodingStrategy
+		guard let decodedObject = try? jsonDecoder.decode(Self.self, from: data) else {
+			return nil
 		}
-		
-		return "Failed to generate debug description"
+		self = decodedObject
+	}
+}
+
+// Provide a debugDescription for all Codable objects
+extension CustomDebugStringConvertible where Self: Codable{
+	
+	/// Return a pretty-printed JSON string
+	public var debugDescription:String {
+		let encoder = JSONEncoder()
+		encoder.outputFormatting = .prettyPrinted
+		guard let jsonData = try? encoder.encode(self),
+			  let prettyPrintedString = String(data: jsonData, encoding: .utf8) else {
+			return "Error: Unable to create pretty-printed JSON string."
+		}
+		return prettyPrintedString
 	}
 }
