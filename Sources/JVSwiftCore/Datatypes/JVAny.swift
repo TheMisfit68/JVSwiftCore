@@ -1,6 +1,5 @@
 //
 //  JVAny.swift
-//  MacSunnySender
 //
 //  Created by Jan Verrept on 17/10/17.
 //  Copyright © 2017 OneClick. All rights reserved.

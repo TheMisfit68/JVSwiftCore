@@ -20,17 +20,16 @@ public extension Decodable{
 	
 }
 
-// Provide a debugDescription for all Codable objects
-// (creating an extension for 'CustomStringConvertible where Self:Codable' seems incopatible with existing implementations in JVNetworkingt)
-public extension Encodable{
 
-	/// Return a pretty-printed JSON string
-	var debugDescription:String {
+// Dont extend Codable as a whole
+// Instead extend Encodable
+public extension Encodable {
+
+	/// Return a pretty-printed JSON string to represent the conforming (En)Codable
+	var customDescription:String {
 		let encoder = JSONEncoder()
 		encoder.outputFormatting = .prettyPrinted
-		guard let jsonData = try? encoder.encode(self), let prettyPrintedString = String(data: jsonData, encoding: .utf8) else {
-			return "Error: Unable to create pretty-printed JSON string."
-		}
+		guard let jsonData = try? encoder.encode(self), let prettyPrintedString = String(data: jsonData, encoding: .utf8) else { return "" }
 		return prettyPrintedString
 	}
 	
