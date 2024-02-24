@@ -27,9 +27,15 @@ public extension Encodable {
 
 	/// Return a pretty-printed JSON string to represent the conforming (En)Codable
 	var customDescription:String {
+		return self.stringValue ?? ""
+	}
+	
+	var stringValue:String?{
 		let encoder = JSONEncoder()
 		encoder.outputFormatting = .prettyPrinted
-		guard let jsonData = try? encoder.encode(self), let prettyPrintedString = String(data: jsonData, encoding: .utf8) else { return "" }
+		let jsonData = try? encoder.encode(self)
+		guard jsonData != nil else { return nil }
+		let prettyPrintedString = String(data: jsonData!, encoding: .utf8)
 		return prettyPrintedString
 	}
 	

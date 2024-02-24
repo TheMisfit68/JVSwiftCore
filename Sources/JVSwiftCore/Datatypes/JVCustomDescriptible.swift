@@ -10,4 +10,6 @@ import Foundation
 
 public protocol CustomDescriptible {
 	var customDescription: String { get }
+	
+	var stringValue:String? {get}
 }
