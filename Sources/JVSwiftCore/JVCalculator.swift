@@ -1,6 +1,5 @@
 //
 //  JVCalculator.swift
-//  JVCocoa
 //
 //  Created by Administrator on 13/09/14.
 //  Copyright (c) 2014 OneClick. All rights reserved.

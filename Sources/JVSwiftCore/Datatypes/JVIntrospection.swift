@@ -1,7 +1,6 @@
 //
 //  JVIntrospection.swift
-//  JVCocoa
-//
+// 
 //  Created by Jan Verrept on 15/11/14.
 //  Copyright (c) 2014 OneClick. All rights reserved.
 //

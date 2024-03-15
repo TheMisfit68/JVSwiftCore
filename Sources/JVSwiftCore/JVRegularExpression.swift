@@ -1,6 +1,5 @@
 //
 //  JVRegularExpression.swift
-//  JVCocoa
 //
 //  Created by Administrator on 8/10/14.
 //  Copyright (c) 2014 OneClick. All rights reserved.

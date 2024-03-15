@@ -1,6 +1,5 @@
 //
 //  JVStack.swift
-//  JVCocoa
 //
 //
 //  Created by Jan Verrept on 25/08/2021.

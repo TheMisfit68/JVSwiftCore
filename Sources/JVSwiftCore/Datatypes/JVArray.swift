@@ -1,6 +1,5 @@
 //
 //  JVArray.swift
-//  JVCocoa
 //
 //  Created by Jan Verrept on 26/09/17.
 //  Copyright © 2017 OneClick. All rights reserved.
