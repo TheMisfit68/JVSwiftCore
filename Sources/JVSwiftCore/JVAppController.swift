@@ -14,6 +14,7 @@ public protocol Shell{
 
 
 public class AppController{
+	let logger = Logger(subsystem: "be.oneclick.JVSwift", category: "AppController")
 	
 	private let terminal:Shell
     
@@ -39,7 +40,6 @@ public class AppController{
 			let installedApps = try terminal.execute(commandString:"ls /Applications")
             return installedApps.containsSubstring(name)
         }catch{
-            let logger = Logger(subsystem: "be.oneclick.JVSwift", category: "AppController")
             logger.error("\(error.localizedDescription)")
             return false
         }
@@ -56,7 +56,6 @@ public class AppController{
         do{
 			_ = try terminal.execute(commandString:"open -a \(name)")
         }catch{
-            let logger = Logger(subsystem: "be.oneclick.JVSwift", category: "AppController")
             logger.error("\(error.localizedDescription)")
         }
         
@@ -67,11 +66,21 @@ public class AppController{
 		do{
 			_ = try terminal.execute(commandString:"pkill -x \(name)")
 		}catch{
-            let logger = Logger(subsystem: "be.oneclick.JVSwift", category: "AppController")
             logger.error("\(error.localizedDescription)")
         }
         
     }
+	
+	public func killOldAppInstances() {
+		
+		do {
+			_ = try terminal.execute(commandString: "pkill -x -o \(name)")
+			
+		} catch {
+			logger.error("\(error.localizedDescription)")
+		}
+		
+	}
     
 }
 
