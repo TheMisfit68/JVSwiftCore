@@ -9,9 +9,14 @@ import Foundation
 
 public extension Date {
 	
-	var utcToLocal: Date {
+	func utcToLocal() -> Date {
 		let secondsFromUTC = Double(Calendar.current.timeZone.secondsFromGMT(for: self))
 		return self+secondsFromUTC
+	}
+	
+	func localToUTC() -> Date {
+		let secondsFromUTC = Double(Calendar.current.timeZone.secondsFromGMT(for: self))
+		return self-secondsFromUTC
 	}
 	
 	var noon: Date {
