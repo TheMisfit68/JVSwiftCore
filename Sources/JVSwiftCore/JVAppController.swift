@@ -13,8 +13,7 @@ public protocol Shell{
 }
 
 
-public class AppController{
-	let logger = Logger(subsystem: "be.oneclick.JVSwift", category: "AppController")
+public class AppController:Loggable{
 	
 	private let terminal:Shell
     
@@ -40,7 +39,7 @@ public class AppController{
 			let installedApps = try terminal.execute(commandString:"ls /Applications")
             return installedApps.containsSubstring(name)
         }catch{
-            logger.error("\(error.localizedDescription)")
+			AppController.logger.error("\(error.localizedDescription)")
             return false
         }
     }
@@ -56,7 +55,7 @@ public class AppController{
         do{
 			_ = try terminal.execute(commandString:"open -a \(name)")
         }catch{
-            logger.error("\(error.localizedDescription)")
+			AppController.logger.error("\(error.localizedDescription)")
         }
         
     }
@@ -66,7 +65,7 @@ public class AppController{
 		do{
 			_ = try terminal.execute(commandString:"pkill -x \(name)")
 		}catch{
-            logger.error("\(error.localizedDescription)")
+			AppController.logger.error("\(error.localizedDescription)")
         }
         
     }
@@ -77,7 +76,7 @@ public class AppController{
 			_ = try terminal.execute(commandString: "pkill -x -o \(name)")
 			
 		} catch {
-			logger.error("\(error.localizedDescription)")
+			AppController.logger.error("\(error.localizedDescription)")
 		}
 		
 	}

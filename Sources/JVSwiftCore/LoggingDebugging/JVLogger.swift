@@ -8,6 +8,19 @@
 import Cocoa
 import OSLog
 
+public protocol Loggable {
+	static var logger: Logger { get }
+}
+
+public extension Loggable {
+	static var logger: Logger {
+		let moduleName = String(reflecting: Self.self)
+		let className = String(describing: Self.self)
+		let subsystem = moduleName.components(separatedBy: ".").dropLast().joined(separator: ".")
+		return Logger(subsystem: subsystem, category: className)
+	}
+}
+
 extension Logger{
     
     public enum Category:String{
