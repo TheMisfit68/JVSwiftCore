@@ -24,9 +24,9 @@ public protocol FullyExtendable: Hashable{
 
 fileprivate typealias hashKey = Int
 fileprivate typealias propertyName = String
-fileprivate var extensionProperties:[hashKey: [propertyName: Any]] = [hashKey: [propertyName: Any]]()
+@MainActor fileprivate var extensionProperties:[hashKey: [propertyName: Any]] = [hashKey: [propertyName: Any]]()
 
-public extension FullyExtendable{
+@MainActor public extension FullyExtendable{
 
 	/**
 	Gets an associated object or value

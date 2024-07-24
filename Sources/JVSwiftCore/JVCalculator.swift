@@ -11,8 +11,6 @@ import Foundation
 /*
 Singleton Calculator class
 */
-
-
 public class JVCalculator: Singleton {
     
     public static let shared:JVCalculator =  JVCalculator()

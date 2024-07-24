@@ -7,7 +7,8 @@
 
 import Foundation
 
-public protocol Singleton{
+@MainActor public protocol Singleton{
+	
     associatedtype SingletonType = Self // Use the type of the class that will later conform to this protocol as a typedefinition here
     
     static var shared: SingletonType { get }
