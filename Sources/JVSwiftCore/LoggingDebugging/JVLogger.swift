@@ -8,11 +8,15 @@
 import Cocoa
 import OSLog
 
+/// A protocol for types that can log messages.
 public protocol Loggable {
 	static var logger: Logger { get }
 }
 
+/// Protocol extension to provide a default logger for all types that conform to `Loggable`.
 public extension Loggable {
+	
+	/// A default logger that automatically gets the subsystem and category set.
 	static var logger: Logger {
 		let moduleName = String(reflecting: Self.self)
 		let className = String(describing: Self.self)
