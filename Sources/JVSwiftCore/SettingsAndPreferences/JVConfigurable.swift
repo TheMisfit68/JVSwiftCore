@@ -9,20 +9,20 @@ import Foundation
 
 public protocol Configurable:NotificationReceiver{
 	
-	func observeNotifications()
+	func observeNotifications() async
 	func reloadSettings()
 	
 }
 
 public extension Configurable {
 	
-	func observeNotifications() {
-		self.observeNotifications(using: reloadSettings)
+	func observeNotifications() async{
+		await self.observeNotifications(using: reloadSettings)
 	}
 	
-	func observeNotifications(using closure: @escaping () async -> Void) async {
+	func observeNotifications(using closure: @escaping () -> Void) async {
 		for await _ in NotificationCenter.default.notifications(named: Notification.Name(notificationKey)) {
-			await closure()
+			closure()
 		}
 	}
 }

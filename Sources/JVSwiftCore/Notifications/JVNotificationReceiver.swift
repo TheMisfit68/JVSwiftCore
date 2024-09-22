@@ -10,7 +10,7 @@ import Foundation
 public protocol NotificationReceiver{
     
     var notificationKey: String { get }
-    func observeNotifications(using closure: @escaping () -> Void)
+    func observeNotifications(using closure: @escaping () -> Void) async
     
 }
 
