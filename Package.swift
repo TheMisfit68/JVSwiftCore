@@ -23,5 +23,5 @@ let package = Package(
             name: "JVSwiftCoreTests",
             dependencies: ["JVSwiftCore"]),
     ],
-	swiftLanguageVersions: [.version("6")]
+	swiftLanguageModes: [.version("6")]
 )
